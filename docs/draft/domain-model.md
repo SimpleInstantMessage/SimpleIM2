@@ -1,34 +1,35 @@
 # 领域模型
 ## 类图
 ```
-        +------------+
-        | LocalAsset |
-        +-----+------+
-              |
+                      +------------+
+                      | LocalAsset |
+                      +-----+------+
+                            |
 
-   +-------+1 |  +----------+
-   | Asset +--+--+ Register |
-   +-------+     +-----+----+
-      1|               |
-       |1
-  +---------+          |        +--------+
-  |         +----------+--------+        |
-  | Account |                   | Device |
-  |         +----------+--------+        |
-  +-+-----+-+          |        +--------+
-    |     |
-    +--+--+            |
-       |
-                       |
-       |
-   +---+----+          |
-   | Dialog |
-   +---+----+          |
-       |
-       |               |
-+------+------+   +----+----+
-| LocalDialog +---+ Session |
-+-------------+   +---------+
+                 +-------+1 |  +----------+
+                 | Asset +--+--+ Register |
+                 +-------+     +-----+----+
+                    1|               |
+                     |1
+                +---------+          |        +--------+
+                |         +----------+--------+        |
+                | Account |                   | Device |
+                |         +----------+--------+        |
+                +-+-----+-+          |        +--------+
+                  |     |
+                  +--+--+            |
+                     |
+                                     |
+                     |
++---------+     1+---+----+          |
+| Message +------+ Dialog |
++---------+      +---+----+          |
+                     |
+                     |               |
+              +------+------+   +----+----+
+              | LocalDialog +---+ Session |
+              +-------------+   +---------+
+
 ```
 不连续的线为虚线，连接着关联类和关联线。
 
@@ -40,6 +41,16 @@ Dialog为具体两个Account之间的对话（理论上的，即时的，完整�
 
 Account在登录Device产生Session后，可以打开部分LocalDialog。
 
+### 类结构
+#### Dialog
+方法：
+- addMessage
+- removeMessage
+- createMessage
+- mergeDialog
+- on以上方法
+- getMessages
+
 ## 组件
 ### Register Manager
 - registerAccount //注册一个现有的Account
@@ -49,6 +60,12 @@ Account在登录Device产生Session后，可以打开部分LocalDialog。
 - on以上方法（如onRegisterAccount ）
 - getAccount
 
+### LocalDialog Manager
+- createDialog
+- removeDialog
+- on以上方法
+- getDialog
+
 ### Session Manager
 - createSession
 - deleteSession
@@ -56,10 +73,3 @@ Account在登录Device产生Session后，可以打开部分LocalDialog。
 - logoutAccount
 - on以上方法
 - getSessions
-
-### LocalDialog Manager
-- createDialog
-- removeDialog
-- mergeDialog
-- on以上方法
-- getDialog
