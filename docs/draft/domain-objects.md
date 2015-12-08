@@ -39,3 +39,23 @@ Asset为Account拥有的资产（理论上的，即时的，完整的）。Devic
 Dialog为具体两个Account之间的对话（理论上的，即时的，完整的）。Device根据需要，在本地保存部分Account之间的部分Dialog，即LocalDialog。
 
 Account在登录Device产生Session后，可以打开部分LocalDialog。
+
+## 组件
+### Register Manager
+- registerAccount //注册一个现有的Account
+- removeAccount
+- createAccount
+- authenticateAccount
+- on以上方法（如onRegisterAccount ）
+
+### Session Manager
+- createSession
+- deleteSession
+- loginAccount
+- on以上方法
+
+### LocalDialog Manager
+- createDialog
+- removeDialog
+- mergeDialog
+- on以上方法
