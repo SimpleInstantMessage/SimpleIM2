@@ -47,15 +47,19 @@ Account在登录Device产生Session后，可以打开部分LocalDialog。
 - createAccount
 - authenticateAccount
 - on以上方法（如onRegisterAccount ）
+- getAccount
 
 ### Session Manager
 - createSession
 - deleteSession
 - loginAccount
+- logoutAccount
 - on以上方法
+- getSessions
 
 ### LocalDialog Manager
 - createDialog
 - removeDialog
 - mergeDialog
 - on以上方法
+- getDialog
